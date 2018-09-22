@@ -15,7 +15,6 @@ class QuizPage extends StatefulWidget {
 }
 
 class QuizPageState extends State<QuizPage> {
-
   Question currentQuestion;
   Quiz quiz = new Quiz([
     new Question("You're at DevFest'18", true),
@@ -50,7 +49,8 @@ class QuizPageState extends State<QuizPage> {
       children: <Widget>[
         new Container(
           color: Colors.white,
-          child: new Column( // This is our main page
+          child: new Column(
+            // This is our main page
             children: <Widget>[
               new Expanded(
                 child: new Container(),
@@ -58,19 +58,13 @@ class QuizPageState extends State<QuizPage> {
               new QuestionText(questionText, questionNumber),
               new Row(
                 children: <Widget>[
-                  new Expanded(
-                      child: new Container()
-                  ),
+                  new Expanded(child: new Container()),
                   new AnswerButton(true, () => handleAnswer(true)),
                   //true button
-                  new Expanded(
-                      child: new Container()
-                  ),
+                  new Expanded(child: new Container()),
                   new AnswerButton(false, () => handleAnswer(false)),
                   // false button
-                  new Expanded(
-                      child: new Container()
-                  ),
+                  new Expanded(child: new Container()),
                 ],
               ),
               new Expanded(
@@ -79,21 +73,24 @@ class QuizPageState extends State<QuizPage> {
             ],
           ),
         ),
-        showIfCorrect == true ? new ResultOverlay(
-            isCorrect,
-                () {
-              if (quiz.length == questionNumber) {
-                Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new ScorePage(quiz.score, quiz.length)), (Route route) => route == null);
-                return;
-              }
-              currentQuestion = quiz.nextQuestion;
-              this.setState(() {
-                showIfCorrect = false;
-                questionText = currentQuestion.question;
-                questionNumber = quiz.questionNumber;
-              });
-            }
-        ) : new Container()
+        showIfCorrect == true
+            ? new ResultOverlay(isCorrect, () {
+          if (quiz.length == questionNumber) {
+            Navigator.of(context).pushAndRemoveUntil(
+                new MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                    new ScorePage(quiz.score, quiz.length)),
+                    (Route route) => route == null);
+            return;
+          }
+          currentQuestion = quiz.nextQuestion;
+          this.setState(() {
+            showIfCorrect = false;
+            questionText = currentQuestion.question;
+            questionNumber = quiz.questionNumber;
+          });
+        })
+            : new Container()
       ],
     );
   }

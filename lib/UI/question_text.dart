@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class QuestionText extends StatefulWidget {
-
   final String _question;
   final int _questionNumber;
 
@@ -12,7 +11,6 @@ class QuestionText extends StatefulWidget {
 }
 
 class QuestionTextState extends State<QuestionText> {
-
   @override
   Widget build(BuildContext context) {
     return new Material(
@@ -21,15 +19,16 @@ class QuestionTextState extends State<QuestionText> {
           padding: new EdgeInsets.symmetric(vertical: 20.0),
           child: new Center(
             child: new Text(
-              "Statement " + widget._questionNumber.toString() + ": " +
+              "Statement " +
+                  widget._questionNumber.toString() +
+                  ": " +
                   widget._question,
               style: new TextStyle(
                 fontSize: 16.0,
                 fontFamily: "Roboto",
               ),
             ),
-          )
-      ),
+          )),
     );
   }
 }
