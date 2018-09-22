@@ -9,12 +9,18 @@ class AnswerButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new FlatButton(
-      onPressed:() {
-        _onTap();
-      },
-      color: Colors.blue,
-      child: new Text("Blah"),
+    return new RaisedButton(
+      onPressed: () => _onTap(),
+      elevation: 4.0,
+      color: _answer == true ? Colors.green : Colors.red,
+      child: new Text(
+        _answer == true ? "True" : "False",
+        style: new TextStyle(
+          fontSize: 24.0,
+          fontFamily: "Roboto",
+        ),
+      ),
+
     );
 //    return new Expanded(
 //      child: new Material(

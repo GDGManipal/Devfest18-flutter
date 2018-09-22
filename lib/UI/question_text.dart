@@ -20,7 +20,13 @@ class QuestionTextState extends State<QuestionText> {
       child: new Padding(
           padding: new EdgeInsets.symmetric(vertical: 20.0),
           child: new Center(
-            child: new Text("Statement " + widget._questionNumber.toString() + ": " + widget._question,
+            child: new Text(
+              "Statement " + widget._questionNumber.toString() + ": " +
+                  widget._question,
+              style: new TextStyle(
+                fontSize: 16.0,
+                fontFamily: "Roboto",
+              ),
             ),
           )
       ),

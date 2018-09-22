@@ -5,7 +5,7 @@ import '../utils/quiz.dart';
 
 import '../UI/answer_button.dart';
 import '../UI/question_text.dart';
-import '../UI/dialog_popup.dart';
+import '../UI/result_overlay.dart';
 
 import './score_page.dart';
 
@@ -18,7 +18,7 @@ class QuizPageState extends State<QuizPage> {
 
   Question currentQuestion;
   Quiz quiz = new Quiz([
-    new Question("Elon Musk is human", false),
+    new Question("You're at DevFest'18", true),
     new Question("Pizza is healthy", false),
     new Question("Flutter is awesome", true)
   ]);
@@ -48,14 +48,38 @@ class QuizPageState extends State<QuizPage> {
     return new Stack(
       fit: StackFit.expand,
       children: <Widget>[
-        new Column( // This is our main page
-          children: <Widget>[
-            new QuestionText(questionText, questionNumber),
-            new AnswerButton(true, () => handleAnswer(true)), //true button
-            new AnswerButton(false, () => handleAnswer(false)), // false button
-          ],
+        new Container(
+          color: Colors.white,
+          child: new Column( // This is our main page
+            children: <Widget>[
+              new Expanded(
+                child: new Container(),
+              ),
+              new QuestionText(questionText, questionNumber),
+              new Row(
+                children: <Widget>[
+                  new Expanded(
+                      child: new Container()
+                  ),
+                  new AnswerButton(true, () => handleAnswer(true)),
+                  //true button
+                  new Expanded(
+                      child: new Container()
+                  ),
+                  new AnswerButton(false, () => handleAnswer(false)),
+                  // false button
+                  new Expanded(
+                      child: new Container()
+                  ),
+                ],
+              ),
+              new Expanded(
+                child: new Container(),
+              ),
+            ],
+          ),
         ),
-        showIfCorrect == true ? new DialogPopUp(
+        showIfCorrect == true ? new ResultOverlay(
             isCorrect,
                 () {
               if (quiz.length == questionNumber) {
