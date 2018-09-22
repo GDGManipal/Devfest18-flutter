@@ -8,15 +8,33 @@ class AnswerButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new RaisedButton(
-      onPressed: () => _onTap(),
-      elevation: 4.0,
-      color: _answer == true ? Colors.green : Colors.red,
-      child: new Text(
-        _answer == true ? "True" : "False",
-        style: new TextStyle(
-          fontSize: 24.0,
-          fontFamily: "Roboto",
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: new RaisedButton(
+        onPressed: () => _onTap(),
+        elevation: 4.0,
+        color: _answer == true ? Colors.green : Colors.red,
+        shape: StadiumBorder(),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: <Widget>[
+              new Icon(
+                  _answer == true ? Icons.done : Icons.close,
+                color: Colors.white,
+              ),
+//              new SizedBox(width: 10.0),
+//              new Text(
+//                _answer == true ? "True" : "False",
+//                style: new TextStyle(
+//                  fontSize: 24.0,
+//                  fontFamily: "Roboto",
+//                  fontWeight: FontWeight.w300,
+//                  color: Colors.white
+//                ),
+//              ),
+            ],
+          ),
         ),
       ),
     );

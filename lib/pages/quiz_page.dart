@@ -56,6 +56,7 @@ class QuizPageState extends State<QuizPage> {
                 child: new Container(),
               ),
               new QuestionText(questionText, questionNumber),
+              new SizedBox(height: 10.0),
               new Row(
                 children: <Widget>[
                   new Expanded(child: new Container()),

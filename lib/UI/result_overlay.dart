@@ -25,6 +25,7 @@ class ResultOverlayState extends State<ResultOverlay> {
                 style: new TextStyle(
                   fontSize: 32.0,
                   fontFamily: "Roboto",
+                  color: Colors.white
                 ),
               ),
             ),
