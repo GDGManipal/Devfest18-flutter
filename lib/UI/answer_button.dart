@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class AnswerButton extends StatelessWidget {
-
   final bool _answer;
   final VoidCallback _onTap;
 
@@ -9,31 +8,35 @@ class AnswerButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new FlatButton(
-      onPressed:() {
-        _onTap();
-      },
-      color: Colors.blue,
-      child: new Text("Blah"),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: new RaisedButton(
+        onPressed: () => _onTap(),
+        elevation: 4.0,
+        color: _answer == true ? Colors.green : Colors.red,
+        shape: StadiumBorder(),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: <Widget>[
+              new Icon(
+                  _answer == true ? Icons.done : Icons.close,
+                color: Colors.white,
+              ),
+//              new SizedBox(width: 10.0),
+//              new Text(
+//                _answer == true ? "True" : "False",
+//                style: new TextStyle(
+//                  fontSize: 24.0,
+//                  fontFamily: "Roboto",
+//                  fontWeight: FontWeight.w300,
+//                  color: Colors.white
+//                ),
+//              ),
+            ],
+          ),
+        ),
+      ),
     );
-//    return new Expanded(
-//      child: new Material(
-//        color: _answer == true ? Colors.greenAccent : Colors.redAccent,
-//        child: new InkWell(
-//          onTap: () => _onTap(),
-//          child: new Center(
-//              child: new Container(
-//                decoration: new BoxDecoration(
-//                    border: new Border.all(color: Colors.white, width: 5.0)
-//                ),
-//                padding: new EdgeInsets.all(20.0),
-//                child: new Text(_answer == true ? "True" : "False",
-//                    style: new TextStyle(color: Colors.white, fontSize: 40.0, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic)
-//                ),
-//              )
-//          ),
-//        ),
-//      ),
-//    );
   }
 }
